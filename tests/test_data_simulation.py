@@ -26,3 +26,4 @@ plt.figure()
 plt.plot(np.real(data).T)
 
 plt.savefig("figures/tests/test_data_simulation.pdf")
+plt.savefig("figures/tests/test_data_simulation.png")

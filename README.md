@@ -29,7 +29,7 @@ Edit line 9 and 10 in the ```compose.yaml``` file to specify the script and run
 We provide multiple test scripts that illustrate how to use the repository.
 
 #### Data generation
-![Data Generation](./figures/tests/test_data_simulation.pdf)
+![Data Generation](./figures/tests/test_data_simulation.png)
 
 #### Network (GPU vs CPU)
 ![network](./figures/tests/test_net.pdf)
