@@ -32,13 +32,13 @@ We provide multiple test scripts that illustrate how to use the repository.
 ![Data Generation](./figures/tests/test_data_simulation.png)
 
 #### Network (GPU vs CPU)
-![network](./figures/tests/test_net.pdf)
+![network](./figures/tests/test_net.png)
 
 #### FFT 
-![FFT](./figures/tests/test_fft.pdf)
+![FFT](./figures/tests/test_fft.png)
 
 #### CFAR
-![CA-CFAR](./figures/tests/test_cfar.pdf)
+![CA-CFAR](./figures/tests/test_cfar.png)
 
 #### Metrics
 

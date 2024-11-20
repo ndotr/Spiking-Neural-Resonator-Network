@@ -48,4 +48,4 @@ for i in range(5):
     axs[2,i].set_title("Error")
     axs[2, i].plot(np.abs(gpu[-1,0,:,i,0,i].T - cpu[-1,0,:,i,0,i].T))
 plt.tight_layout()
-plt.savefig('figures/tests/test_net.pdf')
+plt.savefig('figures/tests/test_net.png')

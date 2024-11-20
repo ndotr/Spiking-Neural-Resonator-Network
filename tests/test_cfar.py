@@ -81,4 +81,4 @@ for i in range(8):
     axs[4,i].set_title('FFT Peak Maps')
     axs[4,i].imshow(fft_peak_maps[32+8*i,:,:].get(), cmap='Greys', aspect='auto')
 plt.tight_layout()
-plt.savefig('figures/tests/test_cfar.pdf')
+plt.savefig('figures/tests/test_cfar.png')
