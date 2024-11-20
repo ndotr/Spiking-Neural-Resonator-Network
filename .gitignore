@@ -1,0 +1,4 @@
+**/__pycache__/
+spinr.egg-info
+data/*
+build
