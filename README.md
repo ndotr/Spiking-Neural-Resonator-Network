@@ -1,93 +1,81 @@
-# Spiking Neural Resonator Network
-
-
-
-## Getting started
-
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab.com/ndotr-research/neuromorphic-computing/spiking-neural-resonator-network.git
-git branch -M main
-git push -uf origin main
-```
-
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://gitlab.com/ndotr-research/neuromorphic-computing/spiking-neural-resonator-network/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+# SpiNR Network - Spiking Neural Resonator Network
 
 ## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+
+The SpiNR network is optimized for GPU/CUDA. We do not provide instructions on how to install the right CUDA version.
+If you are running into version issues, please use the Docker container for easy usage. Otherwise, the software can be installed via pip.
+
+### pip
+
+Install the repository inside the root folder of the project with the following command 
+
+```pip install -e .```
+
+### Docker
+
+For usage of the Docker container, first build the Docker image with
+
+``` docker build -t spinr-container . ```
+
+Then you can use the ```compose.yaml``` file to run any script within the repository.
+Edit line 9 and 10 in the ```compose.yaml``` file to specify the script and run
+
+``` docker compose -f compose.yaml up ```
 
 ## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+### Test scripts
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+We provide multiple test scripts that illustrate how to use the repository.
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+#### Data generation
+![Data Generation](figures/tests/test_data_simulation.pdf)
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+#### Network (GPU vs CPU)
+![network](figures/tests/test_net.pdf)
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+#### FFT 
+![FFT](figures/tests/test_fft.pdf)
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+#### CFAR
+![CA-CFAR](figures/tests/test_cfar.pdf)
 
-## License
-For open source projects, say how it is licensed.
+#### Metrics
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+##### SpiNR
+###### CA-CFAR Metrics
+batch|target|offset|factor|precision|recall|false positive|false negative
+-|-|-|-|-|-|-|-
+0.0|0.0|0.075|2.2|0.704313411937333|0.8125|0.4504978378296407|0.36328125
+0.0|1.0|0.075|2.2|0.2474357724596213|0.625|0.818396772498335|0.546875
+0.0|2.0|0.075|2.2|0.45687763947771165|1.0|0.6321010653313057|0.1796875
+
+###### SNR Metrics
+
+batch|target|snr1|snr2
+-|-|-|-
+0.0|0.0|0.009014716371893883|0.018198952078819275
+0.0|1.0|0.004095181357115507|0.004140193574130535
+0.0|2.0|0.013934250921010971|0.014058755710721016
+
+##### FFT
+###### CA-CFAR Metrics
+batch|target|offset|factor|precision|recall|false positive|false negative
+-|-|-|-|-|-|-|-
+0.0|0.0|0.07|1.8|0.6377169690585708|0.828125|0.49072920056237007|0.34375
+0.0|1.0|0.07|1.8|0.24096696800864875|0.65625|0.8310551770050125|0.53125
+0.0|2.0|0.07|1.8|0.396750001049922|1.0|0.6596740235573575|0.15625
+
+###### SNR Metrics
+
+batch|target|snr1|snr2
+-|-|-|-
+0.0|0.0|0.0048904528291014125|0.009939701410047574
+0.0|1.0|0.0022597451494629937|0.0023013984091858238
+0.0|2.0|0.0075211605087398305|0.007638303000861752
+
+## Todos
+
+- [ ] Add Loihi2 implementation
+
+

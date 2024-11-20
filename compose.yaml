@@ -1,0 +1,18 @@
+services:
+  spinr:
+    image: spinr-container
+    # current user and data group
+    user: user
+    volumes:
+        - ./:/home/user/code
+    working_dir: /home/user/code
+    #command: >
+    #  sh -c "python3 tests/test_net.py"
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            count: all
+            capabilities: [gpu]
+    network_mode: "host"
